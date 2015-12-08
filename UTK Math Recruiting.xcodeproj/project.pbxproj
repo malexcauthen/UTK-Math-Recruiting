@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA57AC161C172553006AF844 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57AC151C172553006AF844 /* AppDelegate.swift */; };
+		FA57AC181C172553006AF844 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57AC171C172553006AF844 /* FirstViewController.swift */; };
+		FA57AC1A1C172553006AF844 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57AC191C172553006AF844 /* SecondViewController.swift */; };
+		FA57AC1D1C172554006AF844 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57AC1B1C172554006AF844 /* Main.storyboard */; };
+		FA57AC1F1C172554006AF844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA57AC1E1C172554006AF844 /* Assets.xcassets */; };
+		FA57AC221C172554006AF844 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57AC201C172554006AF844 /* LaunchScreen.storyboard */; };
+		FA57AC2D1C172554006AF844 /* UTK_Math_RecruitingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57AC2C1C172554006AF844 /* UTK_Math_RecruitingTests.swift */; };
+		FA57AC381C172554006AF844 /* UTK_Math_RecruitingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57AC371C172554006AF844 /* UTK_Math_RecruitingUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA57AC291C172554006AF844 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA57AC0A1C172553006AF844 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA57AC111C172553006AF844;
+			remoteInfo = "UTK Math Recruiting";
+		};
+		FA57AC341C172554006AF844 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA57AC0A1C172553006AF844 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA57AC111C172553006AF844;
+			remoteInfo = "UTK Math Recruiting";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA57AC121C172553006AF844 /* UTK Math Recruiting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UTK Math Recruiting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA57AC151C172553006AF844 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA57AC171C172553006AF844 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		FA57AC191C172553006AF844 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		FA57AC1C1C172554006AF844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA57AC1E1C172554006AF844 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA57AC211C172554006AF844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA57AC231C172554006AF844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA57AC281C172554006AF844 /* UTK Math RecruitingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UTK Math RecruitingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA57AC2C1C172554006AF844 /* UTK_Math_RecruitingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTK_Math_RecruitingTests.swift; sourceTree = "<group>"; };
+		FA57AC2E1C172554006AF844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA57AC331C172554006AF844 /* UTK Math RecruitingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UTK Math RecruitingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA57AC371C172554006AF844 /* UTK_Math_RecruitingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTK_Math_RecruitingUITests.swift; sourceTree = "<group>"; };
+		FA57AC391C172554006AF844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA57AC0F1C172553006AF844 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA57AC251C172554006AF844 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA57AC301C172554006AF844 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA57AC091C172553006AF844 = {
+			isa = PBXGroup;
+			children = (
+				FA57AC141C172553006AF844 /* UTK Math Recruiting */,
+				FA57AC2B1C172554006AF844 /* UTK Math RecruitingTests */,
+				FA57AC361C172554006AF844 /* UTK Math RecruitingUITests */,
+				FA57AC131C172553006AF844 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA57AC131C172553006AF844 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA57AC121C172553006AF844 /* UTK Math Recruiting.app */,
+				FA57AC281C172554006AF844 /* UTK Math RecruitingTests.xctest */,
+				FA57AC331C172554006AF844 /* UTK Math RecruitingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA57AC141C172553006AF844 /* UTK Math Recruiting */ = {
+			isa = PBXGroup;
+			children = (
+				FA57AC151C172553006AF844 /* AppDelegate.swift */,
+				FA57AC171C172553006AF844 /* FirstViewController.swift */,
+				FA57AC191C172553006AF844 /* SecondViewController.swift */,
+				FA57AC1B1C172554006AF844 /* Main.storyboard */,
+				FA57AC1E1C172554006AF844 /* Assets.xcassets */,
+				FA57AC201C172554006AF844 /* LaunchScreen.storyboard */,
+				FA57AC231C172554006AF844 /* Info.plist */,
+			);
+			path = "UTK Math Recruiting";
+			sourceTree = "<group>";
+		};
+		FA57AC2B1C172554006AF844 /* UTK Math RecruitingTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA57AC2C1C172554006AF844 /* UTK_Math_RecruitingTests.swift */,
+				FA57AC2E1C172554006AF844 /* Info.plist */,
+			);
+			path = "UTK Math RecruitingTests";
+			sourceTree = "<group>";
+		};
+		FA57AC361C172554006AF844 /* UTK Math RecruitingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA57AC371C172554006AF844 /* UTK_Math_RecruitingUITests.swift */,
+				FA57AC391C172554006AF844 /* Info.plist */,
+			);
+			path = "UTK Math RecruitingUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA57AC111C172553006AF844 /* UTK Math Recruiting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA57AC3C1C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math Recruiting" */;
+			buildPhases = (
+				FA57AC0E1C172553006AF844 /* Sources */,
+				FA57AC0F1C172553006AF844 /* Frameworks */,
+				FA57AC101C172553006AF844 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UTK Math Recruiting";
+			productName = "UTK Math Recruiting";
+			productReference = FA57AC121C172553006AF844 /* UTK Math Recruiting.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA57AC271C172554006AF844 /* UTK Math RecruitingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA57AC3F1C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math RecruitingTests" */;
+			buildPhases = (
+				FA57AC241C172554006AF844 /* Sources */,
+				FA57AC251C172554006AF844 /* Frameworks */,
+				FA57AC261C172554006AF844 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA57AC2A1C172554006AF844 /* PBXTargetDependency */,
+			);
+			name = "UTK Math RecruitingTests";
+			productName = "UTK Math RecruitingTests";
+			productReference = FA57AC281C172554006AF844 /* UTK Math RecruitingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA57AC321C172554006AF844 /* UTK Math RecruitingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA57AC421C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math RecruitingUITests" */;
+			buildPhases = (
+				FA57AC2F1C172554006AF844 /* Sources */,
+				FA57AC301C172554006AF844 /* Frameworks */,
+				FA57AC311C172554006AF844 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA57AC351C172554006AF844 /* PBXTargetDependency */,
+			);
+			name = "UTK Math RecruitingUITests";
+			productName = "UTK Math RecruitingUITests";
+			productReference = FA57AC331C172554006AF844 /* UTK Math RecruitingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA57AC0A1C172553006AF844 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = malexcauthen;
+				TargetAttributes = {
+					FA57AC111C172553006AF844 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = CQUSLZ57R6;
+					};
+					FA57AC271C172554006AF844 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = CQUSLZ57R6;
+						TestTargetID = FA57AC111C172553006AF844;
+					};
+					FA57AC321C172554006AF844 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = CQUSLZ57R6;
+						TestTargetID = FA57AC111C172553006AF844;
+					};
+				};
+			};
+			buildConfigurationList = FA57AC0D1C172553006AF844 /* Build configuration list for PBXProject "UTK Math Recruiting" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA57AC091C172553006AF844;
+			productRefGroup = FA57AC131C172553006AF844 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA57AC111C172553006AF844 /* UTK Math Recruiting */,
+				FA57AC271C172554006AF844 /* UTK Math RecruitingTests */,
+				FA57AC321C172554006AF844 /* UTK Math RecruitingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA57AC101C172553006AF844 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA57AC221C172554006AF844 /* LaunchScreen.storyboard in Resources */,
+				FA57AC1F1C172554006AF844 /* Assets.xcassets in Resources */,
+				FA57AC1D1C172554006AF844 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA57AC261C172554006AF844 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA57AC311C172554006AF844 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA57AC0E1C172553006AF844 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA57AC1A1C172553006AF844 /* SecondViewController.swift in Sources */,
+				FA57AC161C172553006AF844 /* AppDelegate.swift in Sources */,
+				FA57AC181C172553006AF844 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA57AC241C172554006AF844 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA57AC2D1C172554006AF844 /* UTK_Math_RecruitingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA57AC2F1C172554006AF844 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA57AC381C172554006AF844 /* UTK_Math_RecruitingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA57AC2A1C172554006AF844 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA57AC111C172553006AF844 /* UTK Math Recruiting */;
+			targetProxy = FA57AC291C172554006AF844 /* PBXContainerItemProxy */;
+		};
+		FA57AC351C172554006AF844 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA57AC111C172553006AF844 /* UTK Math Recruiting */;
+			targetProxy = FA57AC341C172554006AF844 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA57AC1B1C172554006AF844 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA57AC1C1C172554006AF844 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA57AC201C172554006AF844 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA57AC211C172554006AF844 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA57AC3A1C172554006AF844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		FA57AC3B1C172554006AF844 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA57AC3D1C172554006AF844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "UTK Math Recruiting/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-Recruiting";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA57AC3E1C172554006AF844 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "UTK Math Recruiting/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-Recruiting";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FA57AC401C172554006AF844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UTK Math RecruitingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UTK Math Recruiting.app/UTK Math Recruiting";
+			};
+			name = Debug;
+		};
+		FA57AC411C172554006AF844 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UTK Math RecruitingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UTK Math Recruiting.app/UTK Math Recruiting";
+			};
+			name = Release;
+		};
+		FA57AC431C172554006AF844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UTK Math RecruitingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UTK Math Recruiting";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		FA57AC441C172554006AF844 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UTK Math RecruitingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UTK Math Recruiting";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA57AC0D1C172553006AF844 /* Build configuration list for PBXProject "UTK Math Recruiting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA57AC3A1C172554006AF844 /* Debug */,
+				FA57AC3B1C172554006AF844 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA57AC3C1C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math Recruiting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA57AC3D1C172554006AF844 /* Debug */,
+				FA57AC3E1C172554006AF844 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA57AC3F1C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math RecruitingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA57AC401C172554006AF844 /* Debug */,
+				FA57AC411C172554006AF844 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA57AC421C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math RecruitingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA57AC431C172554006AF844 /* Debug */,
+				FA57AC441C172554006AF844 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA57AC0A1C172553006AF844 /* Project object */;
+}
