@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 
-
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var typeSegControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -18,16 +17,17 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var filenameTextField: UITextField!
     
 
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var editButton: UIButton!    
+    @IBOutlet weak var editTable: UIButton!
     
-    var fileManager = NSFileManager.defaultManager()
-    var fileHandle: NSFileHandle!
+    var fileManager = FileManager.default
+    var fileHandle: FileHandle!
     
     var textinput: TextInput!
     var multichoice: MultiChoice!
@@ -44,35 +44,44 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view, typically from a nib.
         selectButton.layer.cornerRadius = 5.0
         saveButton.layer.cornerRadius = 5.0
-        deleteButton.layer.cornerRadius = 5.0
         createButton.layer.cornerRadius = 5.0
         editButton.layer.cornerRadius = 5.0
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        titleTextField.addTarget(self, action: #selector(SecondViewController.titleTextFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        dateTextField.addTarget(self, action: #selector(SecondViewController.dateTextFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        locationTextField.addTarget(self, action: #selector(SecondViewController.locationTextFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        titleTextField.addTarget(self, action: #selector(SecondViewController.titleTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        dateTextField.addTarget(self, action: #selector(SecondViewController.dateTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        locationTextField.addTarget(self, action: #selector(SecondViewController.locationTextFieldDidChange(_:)), for: UIControlEvents.editingChanged)
 
         
         mySingleton = Singleton.sharedInstance
+        tableView.allowsSelectionDuringEditing = true
+        tableView.setEditing(true, animated: true)
+        tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
     
-    func titleTextFieldDidChange(textfield: UITextField) {
-        mySingleton.filename = textfield.text!
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.setEditing(editing, animated: animated)
     }
     
-    func dateTextFieldDidChange(textfield: UITextField) {
+    func titleTextFieldDidChange(_ textfield: UITextField) {
+        mySingleton.title = textfield.text!
+    }
+    
+    func dateTextFieldDidChange(_ textfield: UITextField) {
         mySingleton.date = textfield.text!
     }
     
-    func locationTextFieldDidChange(textfield: UITextField) {
+    func locationTextFieldDidChange(_ textfield: UITextField) {
         mySingleton.location = textfield.text!
     }
     
@@ -81,69 +90,101 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     // code for creating tableView
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.mySingleton.questions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (mySingleton.questions[indexPath.row].qType == "TextField"){
-            let cell:CustomTextInputCell = tableView.dequeueReusableCellWithIdentifier("customTextInputCell", forIndexPath: indexPath) as! CustomTextInputCell
+        if (mySingleton.questions[(indexPath as NSIndexPath).row].qType == "TextField"){
+            let cell:CustomTextInputCell = tableView.dequeueReusableCell(withIdentifier: "customTextInputCell", for: indexPath) as! CustomTextInputCell
             
-            if (mySingleton.questions[indexPath.row].required == 1) {
-                cell.secondViewLabel1.text = self.mySingleton.questions[indexPath.row].Label
+            if (mySingleton.questions[(indexPath as NSIndexPath).row].required == 1) {
+                cell.secondViewLabel1.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].Label
             } else {
-                cell.secondViewLabel1.text = self.mySingleton.questions[indexPath.row].rLabel
+                cell.secondViewLabel1.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].rLabel
             }
             
-            tmpInputQuestion = self.mySingleton.questions[indexPath.row] as! TextInput
+            tmpInputQuestion = self.mySingleton.questions[(indexPath as NSIndexPath).row] as! TextInput
             cell.secondViewTextField.placeholder = tmpInputQuestion.placeHolder
             
             return cell
         }
             
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("customMultipleChoiceCell", forIndexPath: indexPath) as! CustomMultipleChoiceCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customMultipleChoiceCell", for: indexPath) as! CustomMultipleChoiceCell
             
-            if (mySingleton.questions[indexPath.row].required == 1) {
-                cell.secondViewLabel2.text = self.mySingleton.questions[indexPath.row].Label
+            if (mySingleton.questions[(indexPath as NSIndexPath).row].required == 1) {
+                cell.secondViewLabel2.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].Label
             } else {
-                cell.secondViewLabel2.text = self.mySingleton.questions[indexPath.row].rLabel
+                cell.secondViewLabel2.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].rLabel
             }
-            tmpMultiQuestion = self.mySingleton.questions[indexPath.row] as! MultiChoice
+            tmpMultiQuestion = self.mySingleton.questions[(indexPath as NSIndexPath).row] as! MultiChoice
             cell.secondViewSegControl.removeAllSegments()
             
             for segment in tmpMultiQuestion.answers {
-                cell.secondViewSegControl.insertSegmentWithTitle(segment, atIndex: tmpMultiQuestion.answers.count, animated: false)
+                cell.secondViewSegControl.insertSegment(withTitle: segment, at: tmpMultiQuestion.answers.count, animated: false)
             }
             
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedCellIndex = indexPath.row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCellIndex = (indexPath as NSIndexPath).row
         mySingleton.indexToEdit = selectedCellIndex
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
-    @IBAction func segueToView(sender: AnyObject) {}
-    @IBAction func cancelToSecondViewController(segue:UIStoryboardSegue) {}
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            mySingleton.questions.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
-        let alertRequired = UIAlertController(title: "Usage Error", message: "Please select a question to edit!", preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        var objectToMove: Question!
+        
+        if (mySingleton.questions[(sourceIndexPath as NSIndexPath).row].qType == "TextField"){
+            objectToMove = mySingleton.questions[sourceIndexPath.row] as! TextInput
+        } else {
+            objectToMove = mySingleton.questions[sourceIndexPath.row] as! MultiChoice
+        }
+        
+        mySingleton.questions.remove(at: sourceIndexPath.row)
+        mySingleton.questions.insert(objectToMove, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func segueToView(_ sender: AnyObject) {}
+    @IBAction func cancelToSecondViewController(_ segue:UIStoryboardSegue) {}
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any!) -> Bool {
+        let alertRequired = UIAlertController(title: "Usage Error", message: "Please select a question to edit!", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
 
         alertRequired.addAction(defaultAction)
         
         if (identifier == "ToEditQuestion") {
             if (mySingleton.indexToEdit == -1) {
-                presentViewController(alertRequired, animated: true, completion: nil)
+                present(alertRequired, animated: true, completion: nil)
                 return false
             }
             
@@ -162,49 +203,56 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     
-    @IBAction func editQuestion(segue:UIStoryboardSegue) {
-        if let editQuestion = segue.sourceViewController as? EditQuestion {
+    @IBAction func editQuestion(_ segue:UIStoryboardSegue) {
+        if let editQuestion = segue.source as? EditQuestion {
             if (editQuestion.flag == 0) {
                 let textinput = editQuestion.newInputQuestion
-                mySingleton.questions[mySingleton.indexToEdit] = textinput
+                mySingleton.questions[mySingleton.indexToEdit] = textinput!
             }
             
             else {
                 let multichoice = editQuestion.newMultiQuestion
-                mySingleton.questions[mySingleton.indexToEdit] = multichoice
+                mySingleton.questions[mySingleton.indexToEdit] = multichoice!
             }
         }
         mySingleton.indexToEdit = -1 
     }
     
-    @IBAction func saveQuestion(segue:UIStoryboardSegue) {
-        if let CreateQuestion = segue.sourceViewController as? createQuestion {
+    @IBAction func saveQuestion(_ segue:UIStoryboardSegue) {
+        if let CreateQuestion = segue.source as? createQuestion {
             if (CreateQuestion.flag == 0) {
                 let textinput = CreateQuestion.newInputQuestion
-                mySingleton.questions.append(textinput)
+                mySingleton.questions.append(textinput!)
             }
                 
             else {
                 let multichoice = CreateQuestion.newMultiQuestion
-                mySingleton.questions.append(multichoice)
+                mySingleton.questions.append(multichoice!)
             }
             
-            let indexPath = NSIndexPath(forRow: mySingleton.questions.count-1, inSection: 0)
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            let indexPath = IndexPath(row: mySingleton.questions.count-1, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
     
-    @IBAction func unwindSelectedForm(segue:UIStoryboardSegue) {
-        if let form = segue.sourceViewController as? DisplayForms {
-            let fileManager = NSFileManager.defaultManager()
+    @IBAction func unwindSelectedForm(_ segue:UIStoryboardSegue) {
+        if let form = segue.source as? DisplayForms {
+            let fileManager = FileManager.default
             
-            if(fileManager.fileExistsAtPath(form.selectedFilePath))
+            if(fileManager.fileExists(atPath: form.selectedFilePath))
             {
                 print("File exists")
             }
             
-            let fileContent = try? NSString(contentsOfFile: form.selectedFilePath, encoding: NSUTF8StringEncoding)
-            var fileContentArr = fileContent!.componentsSeparatedByString("\n")
+            mySingleton.filenameTxt = form.selectedFilename
+            filenameTextField.text = mySingleton.filenameTxt
+            
+            let filename: NSString = mySingleton.filenameTxt as NSString
+            let pathPrefix = filename.deletingPathExtension
+            mySingleton.filenameCsv = pathPrefix + ".csv" as String
+            
+            let fileContent = try? NSString(contentsOfFile: form.selectedFilePath, encoding: String.Encoding.utf8.rawValue)
+            var fileContentArr = fileContent!.components(separatedBy: "\n")
                         
             var index: Int = 0;
             
@@ -223,14 +271,11 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     var req: Int!
                     if (fileContentArr[index+1] == "Required") {
                         req = 0
-                    }
-                    
-                    else {
+                    } else {
                         req = 1
                     }
                     
                     let label = fileContentArr[index+2]
-                    print(label)
                     let placeholder = fileContentArr[index+3]
                     let newInputQuestion = TextInput(placeHolder: placeholder, Label: label, rLabel: label + " *", required: req, qType: "TextField")
                     mySingleton.questions.append(newInputQuestion)
@@ -240,23 +285,21 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 else if (fileContentArr[index] == "MultipleChoice") {
                     var req: Int!
+                    
                     if (fileContentArr[index+1] == "Required") {
                         req = 0
-                    }
-                        
-                    else {
+                    } else {
                         req = 1
                     }
                     
                     let label = fileContentArr[index+2]
-                    print(label)
                     let count = Int(fileContentArr[index+3])
                     
                     var answersCount = 0
                     var multiChoiceAnswers = [String]()
                     index += 4
                     
-                    while (answersCount < count) {
+                    while (answersCount < count!) {
                         multiChoiceAnswers.append(fileContentArr[index + answersCount])
                         answersCount += 1
                     }
@@ -277,135 +320,148 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func handleCancel(alert: UIAlertAction) {
+    func handleCancel(_ alert: UIAlertAction) {
         
     }
     
-    
-    @IBAction func saveForm(sender: AnyObject) {
+    func writeToFile() {
         var lineSC: String = ""
         
-        let alertRequired = UIAlertController(title: "Usage Error", message: "Please fill out the required fields!", preferredStyle: .Alert)
-        let alertSave = UIAlertController(title: "Usage Error", message: "Nothing to save!", preferredStyle: .Alert)
-        let alertSubmitted = UIAlertController(title: "Form Saved", message: "The form was saved successfully!", preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertRequired.addAction(defaultAction)
+        let alertSubmitted = UIAlertController(title: "Form Saved", message: "The form was saved successfully!", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+
         alertSubmitted.addAction(defaultAction)
+        
+        
+        mySingleton.title = titleTextField.text!
+        mySingleton.date = dateTextField.text!
+        mySingleton.location = locationTextField.text!
+        
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(self.mySingleton.filenameTxt)
+        let path = fileURL.path
+        print(path)
+        
+        
+        fileManager.createFile(atPath: path, contents: nil, attributes: nil)
+        fileHandle = FileHandle(forUpdatingAtPath: path)
+        let titleData = String(format: "%@\n%@\n%@\n", self.mySingleton.title, self.mySingleton.location, self.mySingleton.date)
+        fileHandle.write(titleData.data(using: String.Encoding.utf8)!)
+        
+        
+        for segment in self.mySingleton.questions {
+            var required: String = ""
+            if (segment.qType == "TextField") { 
+                if let line = segment as? TextInput {
+                    if (line.required == 0) {
+                        required = "Required"
+                        line.Label.remove(at: line.Label.characters.index(before: line.Label.endIndex))
+                        line.Label.remove(at: line.Label.characters.index(before: line.Label.endIndex))
+                    }
+                    else {required = "NRequired"}
+                    
+                    let lineTF = String(format: "%@\n%@\n%@\n%@\n", line.qType,  required, line.Label, line.placeHolder)
+                    fileHandle.write(lineTF.data(using: String.Encoding.utf8)!)
+                }
+            }
+            else {
+                if let line = segment as? MultiChoice {
+                    if (line.required == 0) {
+                        required = "Required"
+                        line.Label.remove(at: line.Label.characters.index(before: line.Label.endIndex))
+                        line.Label.remove(at: line.Label.characters.index(before: line.Label.endIndex))
+                    }
+                    else {required = "NRequired"}
+                    lineSC = String(format: "%@\n%@\n%@\n", line.qType, required, line.Label)
+                    lineSC = lineSC + String(format: "%@\n", String(line.answers.count))
+                    for answer in line.answers {
+                        lineSC = lineSC + String(format: "%@\n", answer)
+                        
+                    }
+                    
+                    fileHandle.write(lineSC.data(using: String.Encoding.utf8)!)
+                }
+            }
+        }
+        
+        self.present(alertSubmitted, animated: true, completion: nil)
+    }
+
+
+
+    @IBAction func saveForm(_ sender: AnyObject) {
+        let _: UITextField!
+        
+        let alertRequired = UIAlertController(title: "Usage Error", message: "Please fill out the required fields!", preferredStyle: .alert)
+        let alertSave = UIAlertController(title: "Usage Error", message: "Nothing to save!", preferredStyle: .alert)
+        let alertFileName = UIAlertController(title: "Please enter a filename", message: "", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alertFileName.addTextField { (textField) in
+            if self.mySingleton.filenameTxt == "" {
+                textField.text = "Please enter a filename."
+            } else {
+                textField.text = self.mySingleton.filenameTxt
+                
+                if textField.text?.range(of: ".txt") == nil {
+                    textField.text = textField.text! + ".txt"
+                }
+            }
+        }
+        
+        alertFileName.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            let filenameTf = alertFileName.textFields![0] as UITextField // Force unwrapping because we know it exists.
+            self.mySingleton.filenameTxt = filenameTf.text!
+            self.filenameTextField.text = self.mySingleton.filenameTxt
+            
+            self.writeToFile()
+        }))
+        
+        // need to figure out the filename stuff.
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertRequired.addAction(defaultAction)
         alertSave.addAction(defaultAction)
         
         var flag: Int = 1;
         if (titleTextField.text == "") {
-            titleTextField.layer.borderColor = UIColor.redColor().CGColor
+            titleTextField.layer.borderColor = UIColor.red.cgColor
             titleTextField.layer.cornerRadius = 5.0
             titleTextField.layer.borderWidth = 1
             flag = 0;
         }
        
         if (dateTextField.text == "") {
-            dateTextField.layer.borderColor = UIColor.redColor().CGColor
+            dateTextField.layer.borderColor = UIColor.red.cgColor
             dateTextField.layer.cornerRadius = 5.0
             dateTextField.layer.borderWidth = 1
             flag = 0
         }
         
         if (locationTextField.text == "") {
-            locationTextField.layer.borderColor = UIColor.redColor().CGColor
+            locationTextField.layer.borderColor = UIColor.red.cgColor
             locationTextField.layer.cornerRadius = 5.0
             locationTextField.layer.borderWidth = 1
             flag = 0
         }
         
         if (mySingleton.questions.count == 0) {
-            presentViewController(alertSave, animated: true, completion: nil)
+            present(alertSave, animated: true, completion: nil)
             return
         }
         
         if (flag == 0) {
-            presentViewController(alertRequired, animated: true, completion: nil)
+            present(alertRequired, animated: true, completion: nil)
         }
             
         else {
-            titleTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-            dateTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-            locationTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+            titleTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+            dateTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+            locationTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
             
-            mySingleton.filename = titleTextField.text!
-            mySingleton.date = dateTextField.text!
-            mySingleton.location = locationTextField.text!
-            
-            if (!titleTextField.text!.hasSuffix(".txt")) {
-                filename = titleTextField.text! + ".txt"
-            }
-            
-            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-            let fileURL = documentsURL.URLByAppendingPathComponent(filename)
-            let path = fileURL.path
-            print(path)
-            
-            fileManager.createFileAtPath(path!, contents: nil, attributes: nil)
-            fileHandle = NSFileHandle(forUpdatingAtPath: path!)
-            let titleData = String(format: "%@\n%@\n%@\n", mySingleton.filename, mySingleton.location, mySingleton.date)
-            fileHandle.writeData(titleData.dataUsingEncoding(NSUTF8StringEncoding)!)
-            
-            
-            for segment in mySingleton.questions {
-                var required: String = ""
-                if (segment.qType == "TextField") {
-                    if let line = segment as? TextInput {
-                        if (line.required == 0) {
-                            required = "Required"
-                            line.Label.removeAtIndex(line.Label.endIndex.predecessor())
-                            line.Label.removeAtIndex(line.Label.endIndex.predecessor())
-                        }
-                        else {required = "NRequired"}
-                        
-                        let lineTF = String(format: "%@\n%@\n%@\n%@\n", line.qType,  required, line.Label, line.placeHolder)
-                        fileHandle.writeData(lineTF.dataUsingEncoding(NSUTF8StringEncoding)!)
-                    }
-                }
-                else {
-                    if let line = segment as? MultiChoice {
-                        if (line.required == 0) {
-                            required = "Required"
-                            line.Label.removeAtIndex(line.Label.endIndex.predecessor())
-                            line.Label.removeAtIndex(line.Label.endIndex.predecessor())
-                        }
-                        else {required = "NRequired"}
-                        lineSC = String(format: "%@\n%@\n%@\n", line.qType, required, line.Label)
-                        lineSC = lineSC + String(format: "%@\n", String(line.answers.count))
-                        for answer in line.answers {
-                            lineSC = lineSC + String(format: "%@\n", answer)
-                            
-                        }
-                        
-                        fileHandle.writeData(lineSC.dataUsingEncoding(NSUTF8StringEncoding)!)
-                    }
-                }
-            }
-            presentViewController(alertSubmitted, animated: true, completion: nil)
+            self.present(alertFileName, animated: true, completion: nil)
         }
     }
-    
-    
-    @IBAction func deleteQuestion(sender: AnyObject) {
-        
-        if (selectedCellIndex == nil) {
-            let alertRequired = UIAlertController(title: "Usage Error", message: "Please select a question to delete", preferredStyle: .Alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alertRequired.addAction(defaultAction)
-            presentViewController(alertRequired, animated: true, completion: nil)
-
-        }
-        
-        else if (mySingleton.questions.count >  0) {
-            mySingleton.questions.removeAtIndex(selectedCellIndex)
-            tableView.reloadData()
-        }
-        
-        selectedCellIndex = nil
-    }
-    
 }
 
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BD7A877323661622A564799 /* Pods_UTK_Math_Recruiting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2C3155D4A175A89C7DA80C /* Pods_UTK_Math_Recruiting.framework */; };
+		5B8E61EE1CCA6093F44C408C /* Pods_UTK_Math_RecruitingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC86AFECEABDF16D06F0DF69 /* Pods_UTK_Math_RecruitingUITests.framework */; };
+		D68915525899CC0F2A8D413F /* Pods_UTK_Math_RecruitingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7D20FF08EF0229B29BF19B /* Pods_UTK_Math_RecruitingTests.framework */; };
 		FA1F2D681C45BF6D00A7992B /* createQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F2D671C45BF6D00A7992B /* createQuestion.swift */; };
 		FA1F2D6C1C48954F00A7992B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F2D6B1C48954F00A7992B /* Question.swift */; };
 		FA1F2D6F1C48BCAC00A7992B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1F2D6D1C48BCAC00A7992B /* Main.storyboard */; };
@@ -42,7 +45,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA1533E71DBE470D0044A752 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1B2C3155D4A175A89C7DA80C /* Pods_UTK_Math_Recruiting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTK_Math_Recruiting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B4AF97DA2DC46113538EB0 /* Pods-UTK Math RecruitingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTK Math RecruitingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UTK Math RecruitingTests/Pods-UTK Math RecruitingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F7D20FF08EF0229B29BF19B /* Pods_UTK_Math_RecruitingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTK_Math_RecruitingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		487AED2262B129FB0F7C9FE3 /* Pods-UTK Math RecruitingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTK Math RecruitingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UTK Math RecruitingUITests/Pods-UTK Math RecruitingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F6FDE0B3CA08621C10D27A9 /* Pods-UTK Math Recruiting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTK Math Recruiting.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTK Math Recruiting/Pods-UTK Math Recruiting.release.xcconfig"; sourceTree = "<group>"; };
+		E00315ADA91A15DFEBC1FCF4 /* Pods-UTK Math RecruitingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTK Math RecruitingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTK Math RecruitingTests/Pods-UTK Math RecruitingTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA1533E31DBE460F0044A752 /* TPKeyboardAvoiding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TPKeyboardAvoiding.framework; path = "Pods/../build/Debug-iphoneos/TPKeyboardAvoiding/TPKeyboardAvoiding.framework"; sourceTree = "<group>"; };
 		FA1F2D671C45BF6D00A7992B /* createQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createQuestion.swift; sourceTree = "<group>"; };
 		FA1F2D6B1C48954F00A7992B /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		FA1F2D6E1C48BCAC00A7992B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +88,9 @@
 		FA57AC391C172554006AF844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FACA22C71C876DFE003DEF92 /* DisplayForms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayForms.swift; sourceTree = "<group>"; };
 		FAE2CA211CE412BF008496D4 /* EditQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestion.swift; sourceTree = "<group>"; };
+		FBA19FD2D80ED19CB37BD32F /* Pods-UTK Math RecruitingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTK Math RecruitingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UTK Math RecruitingUITests/Pods-UTK Math RecruitingUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FC86AFECEABDF16D06F0DF69 /* Pods_UTK_Math_RecruitingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UTK_Math_RecruitingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEC1D5F5FA86A54D14382C9D /* Pods-UTK Math Recruiting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UTK Math Recruiting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UTK Math Recruiting/Pods-UTK Math Recruiting.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD7A877323661622A564799 /* Pods_UTK_Math_Recruiting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D68915525899CC0F2A8D413F /* Pods_UTK_Math_RecruitingTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,12 +114,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8E61EE1CCA6093F44C408C /* Pods_UTK_Math_RecruitingUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B19178729E8F4203C602081B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FEC1D5F5FA86A54D14382C9D /* Pods-UTK Math Recruiting.debug.xcconfig */,
+				7F6FDE0B3CA08621C10D27A9 /* Pods-UTK Math Recruiting.release.xcconfig */,
+				27B4AF97DA2DC46113538EB0 /* Pods-UTK Math RecruitingTests.debug.xcconfig */,
+				E00315ADA91A15DFEBC1FCF4 /* Pods-UTK Math RecruitingTests.release.xcconfig */,
+				487AED2262B129FB0F7C9FE3 /* Pods-UTK Math RecruitingUITests.debug.xcconfig */,
+				FBA19FD2D80ED19CB37BD32F /* Pods-UTK Math RecruitingUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C477BB662A45AE6A177753C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA1533E31DBE460F0044A752 /* TPKeyboardAvoiding.framework */,
+				1B2C3155D4A175A89C7DA80C /* Pods_UTK_Math_Recruiting.framework */,
+				2F7D20FF08EF0229B29BF19B /* Pods_UTK_Math_RecruitingTests.framework */,
+				FC86AFECEABDF16D06F0DF69 /* Pods_UTK_Math_RecruitingUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA57AC091C172553006AF844 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +152,8 @@
 				FA57AC2B1C172554006AF844 /* UTK Math RecruitingTests */,
 				FA57AC361C172554006AF844 /* UTK Math RecruitingUITests */,
 				FA57AC131C172553006AF844 /* Products */,
+				B19178729E8F4203C602081B /* Pods */,
+				C477BB662A45AE6A177753C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,9 +214,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA57AC3C1C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math Recruiting" */;
 			buildPhases = (
+				C91DCFD69535311B0BCBC9F6 /* [CP] Check Pods Manifest.lock */,
 				FA57AC0E1C172553006AF844 /* Sources */,
 				FA57AC0F1C172553006AF844 /* Frameworks */,
 				FA57AC101C172553006AF844 /* Resources */,
+				F96E53ABB1652508737DF0B1 /* [CP] Embed Pods Frameworks */,
+				B6C7B031D717C8F5870DF3A8 /* [CP] Copy Pods Resources */,
+				FA1533E71DBE470D0044A752 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,9 +235,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA57AC3F1C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math RecruitingTests" */;
 			buildPhases = (
+				5EED91CAA8800034EE2B40CA /* [CP] Check Pods Manifest.lock */,
 				FA57AC241C172554006AF844 /* Sources */,
 				FA57AC251C172554006AF844 /* Frameworks */,
 				FA57AC261C172554006AF844 /* Resources */,
+				B7E97FB2FD8A3ECD425EF147 /* [CP] Embed Pods Frameworks */,
+				7939D449D91785C50E62A966 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,9 +256,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA57AC421C172554006AF844 /* Build configuration list for PBXNativeTarget "UTK Math RecruitingUITests" */;
 			buildPhases = (
+				9C646FA08BD80E875D33053C /* [CP] Check Pods Manifest.lock */,
 				FA57AC2F1C172554006AF844 /* Sources */,
 				FA57AC301C172554006AF844 /* Frameworks */,
 				FA57AC311C172554006AF844 /* Resources */,
+				F0B4067AEF2F98E4BE527F5B /* [CP] Embed Pods Frameworks */,
+				95AB66ECDCEBE71711D22AD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,21 +280,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = malexcauthen;
 				TargetAttributes = {
 					FA57AC111C172553006AF844 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CQUSLZ57R6;
+						LastSwiftMigration = 0800;
 					};
 					FA57AC271C172554006AF844 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CQUSLZ57R6;
+						LastSwiftMigration = 0800;
 						TestTargetID = FA57AC111C172553006AF844;
 					};
 					FA57AC321C172554006AF844 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CQUSLZ57R6;
+						LastSwiftMigration = 0800;
 						TestTargetID = FA57AC111C172553006AF844;
 					};
 				};
@@ -280,6 +348,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EED91CAA8800034EE2B40CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7939D449D91785C50E62A966 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UTK Math RecruitingTests/Pods-UTK Math RecruitingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95AB66ECDCEBE71711D22AD5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UTK Math RecruitingUITests/Pods-UTK Math RecruitingUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C646FA08BD80E875D33053C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6C7B031D717C8F5870DF3A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UTK Math Recruiting/Pods-UTK Math Recruiting-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7E97FB2FD8A3ECD425EF147 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UTK Math RecruitingTests/Pods-UTK Math RecruitingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C91DCFD69535311B0BCBC9F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0B4067AEF2F98E4BE527F5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UTK Math RecruitingUITests/Pods-UTK Math RecruitingUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F96E53ABB1652508737DF0B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UTK Math Recruiting/Pods-UTK Math Recruiting-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA57AC0E1C172553006AF844 /* Sources */ = {
@@ -364,8 +570,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -409,8 +617,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -429,6 +639,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -436,63 +647,83 @@
 		};
 		FA57AC3D1C172554006AF844 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEC1D5F5FA86A54D14382C9D /* Pods-UTK Math Recruiting.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/TPKeyboardAvoiding",
+				);
 				INFOPLIST_FILE = "UTK Math Recruiting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-Recruiting";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		FA57AC3E1C172554006AF844 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F6FDE0B3CA08621C10D27A9 /* Pods-UTK Math Recruiting.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/TPKeyboardAvoiding",
+				);
 				INFOPLIST_FILE = "UTK Math Recruiting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-Recruiting";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		FA57AC401C172554006AF844 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B4AF97DA2DC46113538EB0 /* Pods-UTK Math RecruitingTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "UTK Math RecruitingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UTK Math Recruiting.app/UTK Math Recruiting";
 			};
 			name = Debug;
 		};
 		FA57AC411C172554006AF844 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E00315ADA91A15DFEBC1FCF4 /* Pods-UTK Math RecruitingTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "UTK Math RecruitingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UTK Math Recruiting.app/UTK Math Recruiting";
 			};
 			name = Release;
 		};
 		FA57AC431C172554006AF844 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 487AED2262B129FB0F7C9FE3 /* Pods-UTK Math RecruitingUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "UTK Math RecruitingUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "UTK Math Recruiting";
 				USES_XCTRUNNER = YES;
 			};
@@ -500,11 +731,13 @@
 		};
 		FA57AC441C172554006AF844 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBA19FD2D80ED19CB37BD32F /* Pods-UTK Math RecruitingUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "UTK Math RecruitingUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malexcauthen.UTK-Math-RecruitingUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "UTK Math Recruiting";
 				USES_XCTRUNNER = YES;
 			};

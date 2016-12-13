@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Foundation
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var tableView: UITableView!
-    
+
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    @IBOutlet var tableView: UITableView!
 
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var locationDate: UILabel!
@@ -19,8 +20,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var mySingleton: Singleton!
     var tmpInputQuestion: TextInput!
     var tmpMultiQuestion: MultiChoice!
-    var fileManager = NSFileManager.defaultManager()
-    var fileHandle: NSFileHandle!
+    var fileManager = FileManager.default
+    var fileHandle: FileHandle!
+    var activeTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,46 +30,108 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         submitButton.layer.cornerRadius = 5.0
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
         mySingleton = Singleton.sharedInstance
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
-        if (mySingleton.filename != "") {
-            eventName.text = mySingleton.filename
+        if (mySingleton.title != "") {
+            eventName.text = mySingleton.title
         }
         if (mySingleton.location != "") {
-            locationDate.text = mySingleton.location + ", " + mySingleton.date
+            locationDate.text = mySingleton.location + ", " + mySingleton .date
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+/*
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(note:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(note:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+*/
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+//        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeTextField = textField
+    }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeTextField = nil
+    }
+/*
+    func keyboardWillShow(note: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.tableView.isScrollEnabled = true
+        var info = note.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize!.height, 0)
+        
+        self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeField = self.activeTextField {
+            if (!aRect.contains(activeField.frame.origin)){
+                self.tableView.scrollRectToVisible(activeField.frame, animated: true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(note: NSNotification){
+        //Once keyboard disappears, restore original positions
+        var info = note.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(-36, 0, -keyboardSize!.height, 0)
+        //self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.tableView.isScrollEnabled = true
+    }
+
+*/
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     // code for creating tableView
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.mySingleton.questions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (mySingleton.questions[indexPath.row].qType == "TextField"){
-            let cell:CustomTextInputCell = tableView.dequeueReusableCellWithIdentifier("customTextInputCell", forIndexPath: indexPath) as! CustomTextInputCell
+        if (mySingleton.questions[(indexPath as NSIndexPath).row].qType == "TextField"){
+            let cell:CustomTextInputCell = tableView.dequeueReusableCell(withIdentifier: "customTextInputCell", for: indexPath) as! CustomTextInputCell
             
-            if (mySingleton.questions[indexPath.row].required == 1) {
-                cell.firstViewLabel1.text = self.mySingleton.questions[indexPath.row].Label
+            if (mySingleton.questions[(indexPath as NSIndexPath).row].required == 1) {
+                cell.firstViewLabel1.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].Label
             } else {
-                cell.firstViewLabel1.text = self.mySingleton.questions[indexPath.row].rLabel
+                cell.firstViewLabel1.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].rLabel
 
             }
-            tmpInputQuestion = self.mySingleton.questions[indexPath.row] as! TextInput
+            tmpInputQuestion = self.mySingleton.questions[(indexPath as NSIndexPath).row] as! TextInput
             cell.firstViewTextField.placeholder = tmpInputQuestion.placeHolder
             
             if (mySingleton.answers.count < mySingleton.questions.count) {
@@ -78,18 +142,18 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
             
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("customMultipleChoiceCell", forIndexPath: indexPath) as! CustomMultipleChoiceCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customMultipleChoiceCell", for: indexPath) as! CustomMultipleChoiceCell
             
-            if (mySingleton.questions[indexPath.row].required == 1) {
-                cell.firstViewLabel2.text = self.mySingleton.questions[indexPath.row].Label
+            if (mySingleton.questions[(indexPath as NSIndexPath).row].required == 1) {
+                cell.firstViewLabel2.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].Label
             } else {
-                cell.firstViewLabel2.text = self.mySingleton.questions[indexPath.row].rLabel
+                cell.firstViewLabel2.text = self.mySingleton.questions[(indexPath as NSIndexPath).row].rLabel
             }
-            tmpMultiQuestion = self.mySingleton.questions[indexPath.row] as! MultiChoice
+            tmpMultiQuestion = self.mySingleton.questions[(indexPath as NSIndexPath).row] as! MultiChoice
             cell.firstViewSegControl.removeAllSegments()
             
             for segment in tmpMultiQuestion.answers {
-                cell.firstViewSegControl.insertSegmentWithTitle(segment, atIndex: tmpMultiQuestion.answers.count, animated: false)
+                cell.firstViewSegControl.insertSegment(withTitle: segment, at: tmpMultiQuestion.answers.count, animated: false)
             }
             
             if (mySingleton.answers.count < mySingleton.questions.count) {
@@ -100,15 +164,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    @IBAction func submitForm(sender: AnyObject) {
+    @IBAction func submitForm(_ sender: AnyObject) {
         var formData: String = ""
         
-        if (!mySingleton.filename.hasSuffix(".csv")) {
-            mySingleton.filename = mySingleton.filename + ".csv"
-        }
         
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileURL = documentsURL.URLByAppendingPathComponent(mySingleton.filename)
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(mySingleton.filenameCsv)
         let path = fileURL.path
         print(path)
         
@@ -121,22 +182,23 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if (mySingleton.questions[i].required == 0 && textfield.text == "") {
                     textfield.layer.cornerRadius = 5.0
                     textfield.layer.borderWidth = 1
-                    textfield.layer.borderColor = UIColor.redColor().CGColor
+                    textfield.layer.borderColor = UIColor.red.cgColor
                     questionNotAnswered = 1
                 }
 
                 else {
-                    textfield.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+                    textfield.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
                     textfield.layer.borderWidth = 1.0
                     textfield.layer.cornerRadius = 5
-                    formData = formData + String(format: "%@,", textfield.text!)
+                    let commaless = textfield.text!.replacingOccurrences(of: ",", with: "/", options: .literal, range: nil)
+                    formData = formData + String(format: "%@,", commaless)
                 }
                 
             }
             
             else if let segcontrol = obj as? UISegmentedControl {
                 if (mySingleton.questions[i].required == 0 && segcontrol.selectedSegmentIndex == -1) {
-                    segcontrol.tintColor = UIColor.redColor()
+                    segcontrol.tintColor = UIColor.red
                     questionNotAnswered = 1
                 }
               
@@ -145,7 +207,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if (segcontrol.selectedSegmentIndex == -1) {
                         formData = formData + ","
                     } else {
-                        formData = formData + String(format: "%@,", segcontrol.titleForSegmentAtIndex(segcontrol.selectedSegmentIndex)!)
+                        formData = formData + String(format: "%@,", segcontrol.titleForSegment(at: segcontrol.selectedSegmentIndex)!)
                     }
                 }
             }
@@ -164,12 +226,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     
-        let alertRequired = UIAlertController(title: "Usage Error", message: "Please fill out the required fields!", preferredStyle: .Alert)
-        let alertSubmitted = UIAlertController(title: "Submitted", message: "Thank you for your submission!", preferredStyle: .Alert)
-        let alertNoQuestions = UIAlertController(title: "Usage Error", message: "Nothing to submit!", preferredStyle: .Alert)
+        let alertRequired = UIAlertController(title: "Usage Error", message: "Please fill out the required fields!", preferredStyle: .alert)
+        let alertSubmitted = UIAlertController(title: "Submitted", message: "Thank you for your submission!", preferredStyle: .alert)
+        let alertNoQuestions = UIAlertController(title: "Usage Error", message: "Nothing to submit!", preferredStyle: .alert)
 
         
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertRequired.addAction(defaultAction)
         alertSubmitted.addAction(defaultAction)
         alertNoQuestions.addAction(defaultAction)
@@ -177,11 +239,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if (questionNotAnswered == 0 && mySingleton.answers.count > 0) {
             
-            if !fileManager.fileExistsAtPath(path!) {
-                fileManager.createFileAtPath(path!, contents: nil, attributes: nil)
-                fileHandle = NSFileHandle(forUpdatingAtPath: path!)
+            if !fileManager.fileExists(atPath: path) {
+                fileManager.createFile(atPath: path, contents: nil, attributes: nil)
+                fileHandle = FileHandle(forUpdatingAtPath: path)
                 let titleData = String(format: "%@,%@,%@\n", eventName.text!, mySingleton.date, mySingleton.location)
-                fileHandle.writeData(titleData.dataUsingEncoding(NSUTF8StringEncoding)!)
+                fileHandle.write(titleData.data(using: String.Encoding.utf8)!)
                 
                 var columnTitles: String = ""
                 for title in mySingleton.questions {
@@ -189,24 +251,24 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
                 columnTitles = columnTitles + "\n"
                 fileHandle.seekToEndOfFile()
-                fileHandle.writeData(columnTitles.dataUsingEncoding(NSUTF8StringEncoding)!)
+                fileHandle.write(columnTitles.data(using: String.Encoding.utf8)!)
             }
             
             formData = formData + "\n"
-            fileHandle = NSFileHandle(forUpdatingAtPath: path!)
+            fileHandle = FileHandle(forUpdatingAtPath: path)
             fileHandle.seekToEndOfFile()
-            fileHandle.writeData(formData.dataUsingEncoding(NSUTF8StringEncoding)!)
+            fileHandle.write(formData.data(using: String.Encoding.utf8)!)
             fileHandle.closeFile()
             
-            presentViewController(alertSubmitted, animated: true, completion: nil)
+            present(alertSubmitted, animated: true, completion: nil)
         }
         
         else if (mySingleton.answers.count == 0) {
-            presentViewController(alertNoQuestions, animated: true, completion: nil)
+            present(alertNoQuestions, animated: true, completion: nil)
         }
         
         else {
-            presentViewController(alertRequired, animated: true, completion: nil)
+            present(alertRequired, animated: true, completion: nil)
         }
     }
 }

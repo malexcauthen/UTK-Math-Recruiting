@@ -32,41 +32,41 @@ class ThirdViewController: UIViewController, MFMailComposeViewControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFilePaths()
         tableView.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     // code for creating tableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return csvFiles.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = self.csvFiles[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = self.csvFiles[(indexPath as NSIndexPath).row]
         
         return cell
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedFilename = csvFiles[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFilename = csvFiles[(indexPath as NSIndexPath).row]
         documentsPath = documentsPath + "/"
         selectedFilePath = documentsPath + selectedFilename
     }
 
     
     func getFilePaths() {
-        documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         print(documentsPath)
-        let fileManager = NSFileManager.defaultManager()
-        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(documentsPath)!
+        let fileManager = FileManager.default
+        let enumerator:FileManager.DirectoryEnumerator = fileManager.enumerator(atPath: documentsPath)!
         
         while let element = enumerator.nextObject() as? String {
             if element.hasSuffix(".csv") && !csvFiles.contains(element) { // checks the extension
@@ -76,10 +76,10 @@ class ThirdViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     
-    @IBAction func sendEmail(sender: AnyObject) {
+    @IBAction func sendEmail(_ sender: AnyObject) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
@@ -89,23 +89,23 @@ class ThirdViewController: UIViewController, MFMailComposeViewControllerDelegate
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
-        mailComposerVC.setToRecipients(["pam"])
+        mailComposerVC.setToRecipients(["Pam"])
         mailComposerVC.setSubject("UTK Recruiting Registration Form")
-        let fileData = NSData(contentsOfFile: selectedFilePath)
+        let fileData = try? Data(contentsOf: URL(fileURLWithPath: selectedFilePath))
         mailComposerVC.addAttachmentData(fileData!, mimeType: "text/csv", fileName: selectedFilename)
         
         return mailComposerVC
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         sendMailErrorAlert.addAction(defaultAction)
-        self.presentViewController(sendMailErrorAlert, animated: true, completion: nil)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
     }
     
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

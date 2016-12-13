@@ -14,8 +14,10 @@ class Singleton {
     static let sharedInstance = Singleton()
     var questions: [Question] = []
     var answers: [AnyObject] = []
-    var filename: String = ""
+    var title: String = ""
     var date: String = ""
     var location: String = ""
+    var filenameTxt: String = ""
+    var filenameCsv: String = ""
     var indexToEdit: Int = -1
 }

@@ -42,24 +42,24 @@ class EditQuestion: UIViewController {
         saveButton.layer.cornerRadius = 5.0
         
         
-        inputQuestionTitle.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        inputQuestionHint.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        multiQuestionTitle.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        answerOne.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        answerTwo.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        answerThree.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        answerFour.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        inputQuestionTitle.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        inputQuestionHint.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        multiQuestionTitle.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        answerOne.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        answerTwo.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        answerThree.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        answerFour.addTarget(self, action: #selector(EditQuestion.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         
         mySingleton = Singleton.sharedInstance
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if (mySingleton.questions[mySingleton.indexToEdit].required == 0) {
             required.selectedSegmentIndex = 0
-            mySingleton.questions[mySingleton.indexToEdit].Label.removeAtIndex(mySingleton.questions[mySingleton.indexToEdit].Label.endIndex.predecessor())
-            mySingleton.questions[mySingleton.indexToEdit].Label.removeAtIndex(mySingleton.questions[mySingleton.indexToEdit].Label.endIndex.predecessor())
+            mySingleton.questions[mySingleton.indexToEdit].Label.remove(at: mySingleton.questions[mySingleton.indexToEdit].Label.characters.index(before: mySingleton.questions[mySingleton.indexToEdit].Label.endIndex))
+            mySingleton.questions[mySingleton.indexToEdit].Label.remove(at: mySingleton.questions[mySingleton.indexToEdit].Label.characters.index(before: mySingleton.questions[mySingleton.indexToEdit].Label.endIndex))
         }
         
         else {
@@ -103,12 +103,12 @@ class EditQuestion: UIViewController {
         }
     }
     
-    func textFieldDidChange(textfield: UITextField) {
-        textfield.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+    func textFieldDidChange(_ textfield: UITextField) {
+        textfield.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
     }
     
-    func flagTextField(textfield: UITextField) {
-        textfield.layer.borderColor = UIColor.redColor().CGColor
+    func flagTextField(_ textfield: UITextField) {
+        textfield.layer.borderColor = UIColor.red.cgColor
         textfield.layer.cornerRadius = 5.0
         textfield.layer.borderWidth = 1
     }
@@ -118,22 +118,22 @@ class EditQuestion: UIViewController {
         
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
-        let alertRequired = UIAlertController(title: "Usage Error", message: "Please fill out the required fields!", preferredStyle: .Alert)
-        let alertNotSelected = UIAlertController(title: "Usage Error", message: "Please select a question to edit!", preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any!) -> Bool {
+        let alertRequired = UIAlertController(title: "Usage Error", message: "Please fill out the required fields!", preferredStyle: .alert)
+        let alertNotSelected = UIAlertController(title: "Usage Error", message: "Please select a question to edit!", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertRequired.addAction(defaultAction)
         alertNotSelected.addAction(defaultAction)
         
         if (mySingleton.indexToEdit == -1) {
-            presentViewController(alertNotSelected, animated: true, completion: nil)
+            present(alertNotSelected, animated: true, completion: nil)
             return true
         }
         
         if (identifier == "EditQuestion") {
             if (questionType.selectedSegmentIndex == -1) {
-                presentViewController(alertRequired, animated: true, completion: nil)
-                questionType.tintColor = UIColor.redColor()
+                present(alertRequired, animated: true, completion: nil)
+                questionType.tintColor = UIColor.red
                 return false
             }
                 
@@ -143,7 +143,7 @@ class EditQuestion: UIViewController {
             
             if (questionType.selectedSegmentIndex == 0) {
                 if (!checkTextFieldQuestion()) {
-                    presentViewController(alertRequired, animated: true, completion: nil)
+                    present(alertRequired, animated: true, completion: nil)
                     return false
                 }
                 
@@ -160,7 +160,7 @@ class EditQuestion: UIViewController {
                 }
                 
                 if (!checkSegControlQuestion()) {
-                    presentViewController(alertRequired, animated: true, completion: nil)
+                    present(alertRequired, animated: true, completion: nil)
                     return false
                 }
                 
@@ -207,7 +207,7 @@ class EditQuestion: UIViewController {
         }
         
         if (numAnswers.selectedSegmentIndex == -1) {
-            numAnswers.tintColor = UIColor.redColor()
+            numAnswers.tintColor = UIColor.red
             flag = 0
         }
             
@@ -215,22 +215,22 @@ class EditQuestion: UIViewController {
             numAnswers.tintColor = UIColor(red: 255.0/255.0, green: 130.0/255.0, blue: 0.0/255.0, alpha: 1.0)
         }
         
-        if (answerOne.enabled && answerOne.text == "") {
+        if (answerOne.isEnabled && answerOne.text == "") {
             flagTextField(answerOne)
             flag = 0
         }
         
-        if (answerTwo.enabled && answerTwo.text == "") {
+        if (answerTwo.isEnabled && answerTwo.text == "") {
             flagTextField(answerTwo)
             flag = 0
         }
         
-        if (answerThree.enabled && answerThree.text == "") {
+        if (answerThree.isEnabled && answerThree.text == "") {
             flagTextField(answerThree)
             flag = 0
         }
         
-        if (answerFour.enabled && answerFour.text == "") {
+        if (answerFour.isEnabled && answerFour.text == "") {
             flagTextField(answerFour)
             flag = 0
         }
@@ -243,28 +243,28 @@ class EditQuestion: UIViewController {
     }
     
     
-    func enableTextField(textfield: UITextField) {
-        textfield.enabled = true
+    func enableTextField(_ textfield: UITextField) {
+        textfield.isEnabled = true
         textfield.alpha = 1.0
     }
     
-    func enableSegControl(segControl: UISegmentedControl) {
-        segControl.enabled = true
+    func enableSegControl(_ segControl: UISegmentedControl) {
+        segControl.isEnabled = true
         segControl.alpha = 1.0
     }
     
-    func disableTextField(textfield: UITextField) {
-        textfield.enabled = false
+    func disableTextField(_ textfield: UITextField) {
+        textfield.isEnabled = false
         textfield.alpha = 0.0
     }
     
-    func disableSegControl(segControl: UISegmentedControl) {
-        segControl.enabled = false
+    func disableSegControl(_ segControl: UISegmentedControl) {
+        segControl.isEnabled = false
         segControl.alpha = 0.0
     }
     
     
-    @IBAction func chooseQuestionType(sender: AnyObject) {
+    @IBAction func chooseQuestionType(_ sender: AnyObject) {
         switch (sender.selectedSegmentIndex) {
         case 0:
             disableTextField(multiQuestionTitle)
@@ -291,7 +291,7 @@ class EditQuestion: UIViewController {
     }
     
     
-    @IBAction func chooseNumAnswers(sender: AnyObject) {
+    @IBAction func chooseNumAnswers(_ sender: AnyObject) {
         switch (sender.selectedSegmentIndex) {
             
         case 0:
